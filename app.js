@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var category = require('./routes/category');
 var bucket = require('./routes/bucket');
+var item = require('./routes/item');
 var migration = require('./db/migration');
 
 var app = express();
@@ -25,6 +26,7 @@ migration.init();
 app.use('/', index);
 app.use('/categories', category);
 app.use('/buckets', bucket);
+app.use('/items', item);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
