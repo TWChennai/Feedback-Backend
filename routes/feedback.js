@@ -1,6 +1,6 @@
-let express = require('express');
-let router = express.Router();
-let feedback = require('../models/feedback');
+var express = require('express');
+var router = express.Router();
+var feedback = require('../models/feedback');
 
 router.get('/:id', function(req, res, next) {
   feedback.one(req.params.id, (data) => res.json(data))

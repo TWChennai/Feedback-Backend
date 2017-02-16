@@ -1,10 +1,10 @@
-const db = require('../db/db');
-const uuidV4 = require('uuid/v4');
-const assert = require('assert');
+var db = require('../db/db');
+var uuidV4 = require('uuid/v4');
+var assert = require('assert');
 
-const add = (categoryId, feedback, callback) => {
+var add = (categoryId, feedback, callback) => {
     db.execute((db) => {
-        const collection = db.collection('feedbacks');
+        var collection = db.collection('feedbacks');
         collection.insertOne({
                 _id: uuidV4(),
                 categoryId: categoryId,
@@ -19,9 +19,9 @@ const add = (categoryId, feedback, callback) => {
     });
 };
 
-const list = (categoryId, callback) => {
+var list = (categoryId, callback) => {
     db.execute((db) => {
-        const collection = db.collection('feedbacks');
+        var collection = db.collection('feedbacks');
         collection.find({categoryId: categoryId}).toArray((err, r) => {
                 assert.equal(null, err);
                 callback(r)
@@ -30,9 +30,9 @@ const list = (categoryId, callback) => {
     });
 };
 
-const one = (feedbackId, callback) => {
+var one = (feedbackId, callback) => {
     db.execute((db) => {
-        const collection = db.collection('feedbacks');
+        var collection = db.collection('feedbacks');
         collection.find({_id: feedbackId}).toArray((err, r) => {
                 assert.equal(null, err);
                 callback(r[0])

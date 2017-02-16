@@ -1,6 +1,6 @@
-let express = require('express');
-let router = express.Router();
-let category = require('../models/category');
+var express = require('express');
+var router = express.Router();
+var category = require('../models/category');
 
 router.get('/', function(req, res, next) {
   category.list((data) => res.json(data))

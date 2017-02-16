@@ -1,6 +1,6 @@
-let express = require('express');
-let router = express.Router();
-let bucket = require('../models/bucket');
+var express = require('express');
+var router = express.Router();
+var bucket = require('../models/bucket');
 
 router.get('/', function(req, res, next) {
     bucket.list(req.body.categoryId, (data) => res.json(data))

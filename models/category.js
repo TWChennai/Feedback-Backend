@@ -1,10 +1,10 @@
-const db = require('../db/db');
-const uuidV4 = require('uuid/v4');
+var db = require('../db/db');
+var uuidV4 = require('uuid/v4');
 var assert = require('assert');
 
-const add = (name, callback) => {
+var add = (name, callback) => {
     db.execute((db) => {
-        const collection = db.collection('categories');
+        var collection = db.collection('categories');
         collection.insertOne({_id: uuidV4(), name: name}, function (err, r) {
                 assert.equal(null, err);
                 console.log("category is created");
@@ -14,9 +14,9 @@ const add = (name, callback) => {
     });
 };
 
-const list = (callback) => {
+var list = (callback) => {
     db.execute((db) => {
-        const collection = db.collection('categories');
+        var collection = db.collection('categories');
         collection.find().toArray((err, r) => {
                 assert.equal(null, err);
                 callback(r)

@@ -1,10 +1,10 @@
-const db = require('../db/db');
-const uuidV4 = require('uuid/v4');
-const assert = require('assert');
+var db = require('../db/db');
+var uuidV4 = require('uuid/v4');
+var assert = require('assert');
 
-const add = (categoryId, type, callback) => {
+var add = (categoryId, type, callback) => {
     db.execute((db) => {
-        const collection = db.collection('items');
+        var collection = db.collection('items');
         collection.insertOne({_id: uuidV4(), type: type, categoryId: categoryId}, {}, function (err, r) {
                 assert.equal(null, err);
                 console.log("item is created");
@@ -14,9 +14,9 @@ const add = (categoryId, type, callback) => {
     });
 };
 
-const list = (categoryId, callback) => {
+var list = (categoryId, callback) => {
     db.execute((db) => {
-        const collection = db.collection('items');
+        var collection = db.collection('items');
         collection.find({categoryId: categoryId}).toArray((err, r) => {
                 assert.equal(null, err);
                 callback(r)
