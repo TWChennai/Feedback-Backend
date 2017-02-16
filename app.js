@@ -6,7 +6,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
-var categories = require('./routes/category');
+var category = require('./routes/category');
+var bucket = require('./routes/bucket');
 var migration = require('./db/migration');
 
 var app = express();
@@ -22,7 +23,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 migration.init();
 
 app.use('/', index);
-app.use('/categories', categories);
+app.use('/categories', category);
+app.use('/buckets', bucket);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -39,7 +41,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.send('error');
 });
 
 module.exports = app;

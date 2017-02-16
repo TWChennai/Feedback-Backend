@@ -7,6 +7,14 @@ var collections = [{
             {'name': {'$type': "string"}}
         ]
     }
+}, {
+    name: 'buckets',
+    validator: {
+        '$or': [
+            {'categoryId': {'$type': "uuid"}},
+            {'type': {'$type': "string"}}
+        ]
+    }
 }];
 
 var init = function () {
