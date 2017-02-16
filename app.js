@@ -9,6 +9,7 @@ var index = require('./routes/index');
 var category = require('./routes/category');
 var bucket = require('./routes/bucket');
 var item = require('./routes/item');
+var feedback = require('./routes/feedback');
 var migration = require('./db/migration');
 
 var app = express();
@@ -27,6 +28,7 @@ app.use('/', index);
 app.use('/categories', category);
 app.use('/buckets', bucket);
 app.use('/items', item);
+app.use('/feedback', feedback);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
