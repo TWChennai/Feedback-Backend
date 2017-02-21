@@ -3,7 +3,7 @@ var router = express.Router();
 var item = require('../models/item');
 
 router.get('/', function(req, res, next) {
-    item.list(req.body.categoryId, (data) => res.json(data))
+    item.list(req.query.categoryId, (data) => res.json(data))
 });
 
 router.post('/', function(req, res) {
